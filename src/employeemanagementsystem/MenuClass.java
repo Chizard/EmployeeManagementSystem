@@ -27,7 +27,7 @@ public class MenuClass {
             System.out.print("Make a choice: ");
  
             if (scanner.hasNextInt()) {
-                if (userChoice >= 0 || userChoice < 3) {
+                if (userChoice >= 0 && userChoice < 3) {
                     userChoice = scanner.nextInt();
                     isInt = false;
                 } else {
@@ -78,7 +78,7 @@ public class MenuClass {
             System.out.print("Make a choice: ");
  
             if (scanner.hasNextInt()) {
-                if (userChoice >= 0 || userChoice < 11) {
+                if (userChoice >= 0 && userChoice < 11) {
                     userChoice = scanner.nextInt();
                     isInt = false;
                 } else {
@@ -148,7 +148,7 @@ public class MenuClass {
             System.out.print("Make a choice: ");
  
             if (scanner.hasNextInt()) {
-                if (userChoice >= 0 || userChoice < 7) {
+                if (userChoice >= 0 && userChoice < 7) {
                     userChoice = scanner.nextInt();
                     isInt = false;
                 } else {
