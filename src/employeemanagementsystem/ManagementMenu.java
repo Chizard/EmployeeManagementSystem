@@ -12,7 +12,7 @@ public class ManagementMenu {
     public ArrayList<Employee> getAllEmployees() {
         return employee;
     }
-
+ 
     public void registerNewEmployee() {
         String firstName;
         String lastName;

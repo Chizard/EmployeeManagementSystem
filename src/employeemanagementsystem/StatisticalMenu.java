@@ -3,7 +3,7 @@ package employeemanagementsystem;
 
 import java.util.ArrayList;
 
-
+ 
 public class StatisticalMenu {
     /*
                     + "\n4: Total bonus"

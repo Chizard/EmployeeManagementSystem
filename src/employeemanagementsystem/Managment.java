@@ -10,7 +10,7 @@ public class Managment extends Employee {
     public Managment(String firstName, String lastName, String department, String position, String gender, int dateOfBirth, int salary) {
         super(firstName, lastName, department, position, gender, dateOfBirth, salary);
     }
-    
+     
     public Managment() {
         
     }

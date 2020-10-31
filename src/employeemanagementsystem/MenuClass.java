@@ -8,7 +8,7 @@ package employeemanagementsystem;
 import java.util.*;
 
 public class MenuClass {
-
+ 
     Scanner scanner = new Scanner(System.in);
     boolean backToMain = true;
     ManagementMenu menu = new ManagementMenu();
