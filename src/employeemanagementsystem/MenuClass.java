@@ -1,31 +1,37 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package employeemanagementsystem;
- 
+
 import java.util.*;
- 
+
 public class MenuClass {
- 
+
     Scanner scanner = new Scanner(System.in);
     boolean backToMain = true;
     ManagementMenu menu = new ManagementMenu();
-    Statistics smenu = new Statistics();
- 
+    StatisticalMenu menu1 = new StatisticalMenu();
+    boolean testing = true;
+
     public void calling() {
         while (backToMain) {            
             switchNrOne(menuNrOne());
         }
     }
- 
+
     public int menuNrOne() {
         int userChoice = 0;
         boolean isInt = true;
-       
+        
         while (isInt) {
             System.out.println("\nWelcome to EmployeeManagementSystem"
                     + "\n1: Employee managment"
                     + "\n2: Employee statistics"
                     + "\n0: Exit program");
             System.out.print("Make a choice: ");
- 
+
             if (scanner.hasNextInt()) {
                 if (userChoice >= 0 && userChoice < 3) {
                     userChoice = scanner.nextInt();
@@ -38,17 +44,23 @@ public class MenuClass {
                 scanner.next();
             }
         }
- 
+
         return userChoice;
     }
- 
+
     public void switchNrOne(int userChoice) {
         switch (userChoice) {
             case 1:
-                switchNrTwo(menuNrTwo());
+                testing = true;
+                while (testing) {
+                    switchNrTwo(menuNrTwo());
+                }
                 break;
             case 2:
-                switchNrThree(menuNrThree());
+                testing = true;
+                while (testing) {
+                    switchNrThree(menuNrThree()); 
+                }
                 break;
             case 0:
                 System.out.println("Thank you for using EmployeeManagementSystem ");
@@ -58,12 +70,12 @@ public class MenuClass {
                 System.out.println("Wrong input!");
         }
     }
- 
+
     public int menuNrTwo() {
         int userChoice = 0;
         boolean isInt = true;
         while (isInt) {
- 
+
             System.out.println("\n1: Register new employee"
                     + "\n2: Remove employee"
                     + "\n3: Update name of employee"
@@ -76,11 +88,11 @@ public class MenuClass {
                     + "\n10: Register bonus"
                     + "\n0: Back to main menu");
             System.out.print("Make a choice: ");
- 
+
             if (scanner.hasNextInt()) {
                 if (userChoice >= 0 && userChoice < 11) {
                     userChoice = scanner.nextInt();
-                    isInt = false;
+                    isInt = false; 
                 } else {
                     System.out.println("\nSelect an integer between");
                     scanner.next();
@@ -90,10 +102,10 @@ public class MenuClass {
                 scanner.next();
             }
         }
- 
+
         return userChoice;
     }
-   
+    
     public void switchNrTwo(int userChoice) {
         switch (userChoice) {
             case 1:
@@ -127,66 +139,66 @@ public class MenuClass {
                 menu.registerBonus();
                 break;
             case 0:
-                System.out.println("\nBack to main menu");
+                exitMenu();
                 break;
             default:
                 System.out.println("Wrong input!");
         }
     }
- 
+
     public int menuNrThree() {
         int userChoice = 0;
         boolean isInt = true;
-       
+        
         while (isInt) {
             System.out.println("\n1: Average wage at the company"
-                    + "\n2: Highest salary at the company"       //Johanna
+                    + "\n2: Highest salary at the company"//Johanna
                     + "\n3: Lowest salary at the company"
-                    + "\n4: Total bonus"                         //Tobias
-                    + "\n5: Gender in percentage in the company" //Martina
+                    + "\n4: Gender in percentage in the company" //Martina
                     + "\n0: Back to main menu");
             System.out.print("Make a choice: ");
- 
+
             if (scanner.hasNextInt()) {
-                if (userChoice >= 0 && userChoice < 7) {
+                if (userChoice >= 0 && userChoice < 5) {
                     userChoice = scanner.nextInt();
                     isInt = false;
                 } else {
-                    System.out.println("\nSelect an integer between 0-6");
+                    System.out.println("\nSelect an integer between 0-4");
                 }
             } else {
                 System.out.println("\nSelect an integer");
                 scanner.next();
             }
         }
- 
+
         return userChoice;
     }
-   
+    
     public void switchNrThree(int userChoice) {
-        //StatisticalMenu menu1 = new StatisticalMenu();
+        
         switch (userChoice) {
             case 1:
-                smenu.AverageWage(menu.getAllEmployees());
+                menu1.AverageWage(menu.getAllEmployees());
                 break;
             case 2:
-                System.out.println("Du är i case 2");
+                menu1.highestWage(menu.getAllEmployees());
                 break;
             case 3:
-                System.out.println("Du är i case 3");
+                menu1.lowestWage(menu.getAllEmployees());
                 break;
             case 4:
-                System.out.println("Du är i case 4");
-                break;
-            case 5:
-                System.out.println("Du är i case 5");
+                menu1.showGenderInProcentage(menu.getAllEmployees());
                 break;
             case 0:
-                System.out.println("\nBack to main menu");
+                exitMenu();
                 break;
             default:
                 System.out.println("Wrong input!");
         }
     }
+    
+    public void exitMenu() {
+        testing = false;
+        System.out.println("\nBack to main menu");
+    }
 }
- 

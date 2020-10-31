@@ -1,19 +1,15 @@
 package employeemanagementsystem;
-import java.util.*;
 
+import java.util.*;
 
 public class EmployeeManagementSystem {
     
-   public static Scanner sc = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
     
     public static void main(String[] args) {
-     
         MenuClass m = new MenuClass();
         m.calling();
+        //ManagementMenu m = new ManagementMenu();
+        //m.registerNewEmployee();
     }
-
-    
-
-    
-    
 }
