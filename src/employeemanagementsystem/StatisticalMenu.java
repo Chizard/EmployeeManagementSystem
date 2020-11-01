@@ -5,10 +5,7 @@ import java.util.ArrayList;
 
  
 public class StatisticalMenu {
-    /*
-                    + "\n4: Total bonus"
-    
-                    + "\n0: Back to main menu"*/
+   
     
     public void AverageWage(ArrayList<Employee> employee) {         // lägger in ArrayList så vi kan hitta employee
         int sum = 0;

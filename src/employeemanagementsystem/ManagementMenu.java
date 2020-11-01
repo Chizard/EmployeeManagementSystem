@@ -5,11 +5,11 @@ import jdk.nashorn.internal.parser.TokenType;
 
 public class ManagementMenu {
 
-    ArrayList<Employee> employee = new ArrayList<>();
-    ArrayList<NewInterface> develompentBonus = new ArrayList<>();
+    ArrayList<Employee> employee = new ArrayList<>();                   // Skapar en arraylist med olika värden ifrån Employee super-klassen
+    ArrayList<NewInterface> develompentBonus = new ArrayList<>();       
     Scanner scanner = new Scanner(System.in);
 
-    public ArrayList<Employee> getAllEmployees() {
+    public ArrayList<Employee> getAllEmployees() {                      // Är här för att ge access till employee arraylistan
         return employee;
     }
  
@@ -56,7 +56,7 @@ public class ManagementMenu {
             }
         }
 
-        // Martina fixar kontroll på datumet
+        
         int year;
         int month;
         int day;
@@ -172,28 +172,28 @@ public class ManagementMenu {
         }
 
         if (department.equalsIgnoreCase("Managment")) {
-            Managment newEmployee = new Managment(firstName, lastName, department, lastName, gender, dateOfBirth, salary);
-            employee.add(newEmployee);
+            Managment newEmployee = new Managment(firstName, lastName, department, lastName, gender, dateOfBirth, salary);  // Skapar objekt för Managment classen så man kommer åt bonus för dem som jobbar i Managment
+            employee.add(newEmployee);                                                                                      // Sparar firstName, lastName etc i employee array
         } else if (department.equalsIgnoreCase("Development")) {
             Development newDevelopment = new Development(firstName, lastName, department, lastName, gender, dateOfBirth, salary);
             employee.add(newDevelopment);
-            develompentBonus.add(newDevelopment);
+            develompentBonus.add(newDevelopment);                           // Ger folk som jobbar i Development avdelningen en extra bonus
         }
 
         //Employee newEmployee = new Employee(firstName, lastName, department, employment, gender, dateOfBirth, salary);
         //employee.add(newEmployee);
     }
 
-    public void displayAllEmployees() {
+    public void displayAllEmployees() {                                 // Bara till för att visa alla anställda
         System.out.println(employee);
     }
 
-    public void removeEmployee() {
+    public void removeEmployee() {                                     
         int id;
 
         System.out.println("Enter the ID of the employee to remove");
         if (scanner.hasNextInt()) {
-            id = scanner.nextInt();
+            id = scanner.nextInt();                                     // Tar ID ifrån user input och sedan och om detta ID finns så raderas den anställda
             scanner.nextLine();
             for (int i = 0; i < employee.size(); i++) {
                 if (employee.get(i).getId() == id) {
@@ -210,14 +210,14 @@ public class ManagementMenu {
         if (scanner.hasNextInt()) {
             id = scanner.nextInt();
             scanner.nextLine();
-            for (Employee changeName : employee) {
-                if (changeName.getId() == id) {
+            for (Employee changeName : employee) {                       // Skapar elementet changeName i employee-arraylistan
+                if (changeName.getId() == id) {                          // Jämnför ID som användaren har skrivit in med det/dem som är sparade i Arraylistan
                     System.out.println("Enter first name: ");
                     String firstName = scanner.nextLine();
-                    changeName.setFirstName(firstName);
+                    changeName.setFirstName(firstName);                 // Anger nytt firstName i Emplloyee superklass
                     System.out.println("Enter last name: ");
                     String lastName = scanner.nextLine();
-                    changeName.setLastName(lastName);
+                    changeName.setLastName(lastName);                   // Anger nytt lastName i EMployee superklass
                     System.out.println("Name has been updated!");
                 } else {
                     System.out.println("Incorrect input");
@@ -235,7 +235,7 @@ public class ManagementMenu {
             id = scanner.nextInt();
             scanner.nextLine();
             for (Employee changeDepartment : employee) {
-                if (changeDepartment.getId() == id) {
+                if (changeDepartment.getId() == id) {                               //Jämnför det ID som användaren skrivit in med den/dem som är sparade i arraylist
                     if (changeDepartment.getDepartment().equalsIgnoreCase("Managment")) {
                         changeDepartment.setDepartment("Development");
                         System.out.println("Department updatet to Development \nIs the employee 1: Technician or 2: Programmer?");
@@ -343,8 +343,8 @@ public class ManagementMenu {
         System.out.println("Is it crunch bonus time?");
         String yesOrNo = scanner.next();
         if (yesOrNo.equalsIgnoreCase("Yes")) {
-            for (NewInterface bonus : develompentBonus) {
-                bonus.crunchBonus();
+            for (NewInterface bonus : develompentBonus) {               //          
+                bonus.crunchBonus();                                    // Om anställd är i Development avdelning så ska han få en ytterligare bonus
             }
             System.out.println("\nCrunch bonus registered\n");
             System.out.println(develompentBonus);
