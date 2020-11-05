@@ -54,6 +54,9 @@ public class StatisticalMenu {
                 lowest = employee.get(i).getSalary();
             }
         }
-        System.out.println("The lowest wage is: " + lowest);
+           
     }
+    
 }
+
+

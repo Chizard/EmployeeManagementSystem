@@ -2,17 +2,18 @@ package employeemanagementsystem;
 
 import java.util.*;
 import jdk.nashorn.internal.parser.TokenType;
+import java.io.*;
 
 public class ManagementMenu {
 
     ArrayList<Employee> employee = new ArrayList<>();                   // Skapar en arraylist med olika värden ifrån Employee super-klassen
-    ArrayList<NewInterface> develompentBonus = new ArrayList<>();       
+    ArrayList<NewInterface> develompentBonus = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
 
     public ArrayList<Employee> getAllEmployees() {                      // Är här för att ge access till employee arraylistan
         return employee;
     }
- 
+
     public void registerNewEmployee() {
         String firstName;
         String lastName;
@@ -56,7 +57,6 @@ public class ManagementMenu {
             }
         }
 
-        
         int year;
         int month;
         int day;
@@ -168,6 +168,7 @@ public class ManagementMenu {
                     System.out.println("\nSelect an integer\n");
                     scanner.next();
                 }
+                                        
             }
         }
 
@@ -177,18 +178,32 @@ public class ManagementMenu {
         } else if (department.equalsIgnoreCase("Development")) {
             Development newDevelopment = new Development(firstName, lastName, department, lastName, gender, dateOfBirth, salary);
             employee.add(newDevelopment);
-            develompentBonus.add(newDevelopment);                           // Ger folk som jobbar i Development avdelningen en extra bonus
+            develompentBonus.add(newDevelopment);                                                                          // Ger folk som jobbar i Development avdelningen en extra bonus
         }
-
-        //Employee newEmployee = new Employee(firstName, lastName, department, employment, gender, dateOfBirth, salary);
-        //employee.add(newEmployee);
+            saveUser();
     }
 
     public void displayAllEmployees() {                                 // Bara till för att visa alla anställda
-        System.out.println(employee);
+        //System.out.println(employee);
+        try {
+            
+            employee = null;
+            FileInputStream fileIn = new FileInputStream("emp.ser");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            employee = (ArrayList) in.readObject();
+            in.close();
+            fileIn.close();
+            
+            System.out.println(employee);
+        } catch (Exception e) {
+            
+        }
+        
+        
+        
     }
 
-    public void removeEmployee() {                                     
+    public void removeEmployee() {
         int id;
 
         System.out.println("Enter the ID of the employee to remove");
@@ -356,4 +371,20 @@ public class ManagementMenu {
             System.out.println(employee);
         }
     }
+
+    public void saveUser() {
+        try {
+
+            FileOutputStream fileOut = new FileOutputStream("emp.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(employee);
+            out.close();
+            fileOut.close();
+            System.out.println("Saved!");
+
+        } catch (Exception e) {
+        }
+
+    }
+
 }

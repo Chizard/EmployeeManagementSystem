@@ -1,18 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package employeemanagementsystem;
 
 import java.util.*;
 
 public class MenuClass {
  
-    Scanner scanner = new Scanner(System.in);               //  Skapar objekt så Scanner kan användas för att få in user input
+    Scanner scanner = new Scanner(System.in);               //  Skapar klass så Scanner kan användas för att få in user input
     boolean backToMain = true;                              //  
-    ManagementMenu menu = new ManagementMenu();             //  Skapar objekt så att vi kan komma åt ManagementMenu här ifrån
-    StatisticalMenu menu1 = new StatisticalMenu();          //  Skapar objekt så att vi kan komma åt StatisticalMenu här ifrån
+    ManagementMenu menu = new ManagementMenu();             //  Skapar klass så att vi kan komma åt ManagementMenu här ifrån
+    StatisticalMenu menu1 = new StatisticalMenu();          //  Skapar klass så att vi kan komma åt StatisticalMenu här ifrån
     boolean testing = true;                                 //
 
     public void calling() {                                  
@@ -33,7 +28,7 @@ public class MenuClass {
             System.out.print("Make a choice: ");
 
             if (scanner.hasNextInt()) {                     // Tar user input och kollar så att användaren skriver in en int. Om ingen int skrivs in så hoppar den till else
-                if (userChoice >= 0 && userChoice < 3) {    // OM userChoice är en int så kollar man om int'en är större eller 0 och mindre än 3 så 
+                if (userChoice >= 0 && userChoice < 3) {    // OM userChoice är en int så kollar man om int'en är större eller 0 och mindre än 3 
                     userChoice = scanner.nextInt();         // Gör om scanner till userChoice.
                     isInt = false;                          // Stänger av loopen för denna meny
                 } else {
@@ -133,7 +128,7 @@ public class MenuClass {
                 menu.searchDepartment();                            //
                 break;
             case 9:
-                menu.displayAllEmployees();                         //
+                menu.displayAllEmployees();                        //
                 break;
             case 10:
                 menu.registerBonus();                               //

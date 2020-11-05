@@ -6,8 +6,9 @@
 package employeemanagementsystem;
 
 import java.util.*;
+import java.io.*;
  
-public class Employee {
+public class Employee  implements Serializable {
     private String firstName;
     private String lastName;
     private String department;
@@ -22,7 +23,7 @@ public class Employee {
     static int idGenerator = 1;
 
     public Employee(String firstName, String lastName, String department, String position, String gender, int dateOfBirth, int salary) {
-        this.id = idGenerator; // får samma id... 
+        this.id = idGenerator;
         idGenerator++;
         this.firstName = firstName;
         this.lastName = lastName;

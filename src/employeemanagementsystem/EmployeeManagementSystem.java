@@ -1,6 +1,7 @@
 package employeemanagementsystem;
 
 import java.util.*;
+import java.io.*;
 
 public class EmployeeManagementSystem {
     
@@ -9,7 +10,19 @@ public class EmployeeManagementSystem {
     public static void main(String[] args) {
         MenuClass m = new MenuClass();              //Skapar objektet m med hjälp av MenuClass för att komma åt construktor och liknande där i
         m.calling();                                // Använder objektet m för att kalla på calling construktorn i MenuClass
-        //ManagementMenu m = new ManagementMenu();
-        //m.registerNewEmployee();
+        ManagementMenu manaMenu = new ManagementMenu();
+        
+        //try {
+            
+        //    FileOutputStream fileOut = new FileOutputStream("emp.ser");
+        //    ObjectOutputStream out = new ObjectOutputStream(fileOut);
+        //    out.writeObject(manaMenu);
+        //    out.close();
+        //    fileOut.close();
+        //    System.out.println("Saved!");
+            
+       // } catch (Exception e) {
+       // }
+        
     }
 }

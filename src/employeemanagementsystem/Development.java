@@ -23,7 +23,7 @@ public class Development extends Employee  implements NewInterface{             
        bonus = getSalary()*5/100;
        newSalary = getSalary() + bonus;                         // Uppdaterar salary i Employee superklass med getSalary() och lägger sedan till bonus
        salary = (int) newSalary;
-       setSalary(salary);                                       // Sätter ny salary från uträkningarna i denna construktor
+       setSalary(salary);                                       // Sätter ny salary från uträkningarna i denna metod
     }
     
     @Override
