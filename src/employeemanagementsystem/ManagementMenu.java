@@ -4,11 +4,11 @@ import java.util.*;
 import jdk.nashorn.internal.parser.TokenType;
 import java.io.*;
 
-public class ManagementMenu {
+public class ManagementMenu implements Serializable {
 
     ArrayList<Employee> employee = new ArrayList<>();                   // Skapar en arraylist med olika värden ifrån Employee super-klassen
     ArrayList<NewInterface> develompentBonus = new ArrayList<>();
-    Scanner scanner = new Scanner(System.in);
+    transient Scanner scanner = new Scanner(System.in);
 
     public ArrayList<Employee> getAllEmployees() {                      // Är här för att ge access till employee arraylistan
         return employee;
@@ -168,7 +168,7 @@ public class ManagementMenu {
                     System.out.println("\nSelect an integer\n");
                     scanner.next();
                 }
-                                        
+
             }
         }
 
@@ -180,27 +180,30 @@ public class ManagementMenu {
             employee.add(newDevelopment);
             develompentBonus.add(newDevelopment);                                                                          // Ger folk som jobbar i Development avdelningen en extra bonus
         }
-            saveUser();
+        saveUser();
     }
 
     public void displayAllEmployees() {                                 // Bara till för att visa alla anställda
         //System.out.println(employee);
         try {
-            
-            employee = null;
-            FileInputStream fileIn = new FileInputStream("emp.ser");
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-            employee = (ArrayList) in.readObject();
-            in.close();
-            fileIn.close();
-            
-            System.out.println(employee);
-        } catch (Exception e) {
-            
+            FileInputStream fis = new FileInputStream("employeeData");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+
+            employee = (ArrayList) ois.readObject();
+
+            ois.close();
+            fis.close();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+            return;
+        } catch (ClassNotFoundException c) {
+            System.out.println("Class not found");
+            c.printStackTrace();
+            return;
         }
-        
-        
-        
+
+        System.out.println(employee);
+
     }
 
     public void removeEmployee() {
@@ -374,17 +377,15 @@ public class ManagementMenu {
 
     public void saveUser() {
         try {
-
-            FileOutputStream fileOut = new FileOutputStream("emp.ser");
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(employee);
-            out.close();
-            fileOut.close();
-            System.out.println("Saved!");
-
-        } catch (Exception e) {
+            FileOutputStream fos = new FileOutputStream("employeeData");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(employee);
+            oos.close();
+            fos.close();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
         }
 
+        System.out.println("Employee Saved!");
     }
-
 }

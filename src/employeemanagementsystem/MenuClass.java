@@ -1,16 +1,18 @@
 package employeemanagementsystem;
 
+import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
-public class MenuClass {
+public class MenuClass implements Serializable{
  
-    Scanner scanner = new Scanner(System.in);               //  Skapar klass så Scanner kan användas för att få in user input
+    transient Scanner scanner = new Scanner(System.in);               //  Skapar klass så Scanner kan användas för att få in user input
     boolean backToMain = true;                              //  
     ManagementMenu menu = new ManagementMenu();             //  Skapar klass så att vi kan komma åt ManagementMenu här ifrån
     StatisticalMenu menu1 = new StatisticalMenu();          //  Skapar klass så att vi kan komma åt StatisticalMenu här ifrån
     boolean testing = true;                                 //
 
-    public void calling() {                                  
+    public void calling() throws IOException, ClassNotFoundException {                                  
         while (backToMain) {                                //  Till så att vi kan fortsätta loopa menuNrOne utan att stänga av programmet
             switchNrOne(menuNrOne());                       //  Kallar på switchNrOne som behöver en int så den hoppar till menuNrOne för att få en int
         }
@@ -43,7 +45,7 @@ public class MenuClass {
         return userChoice;                                  // Returnerar en int till switchNrOne
     }
 
-    public void switchNrOne(int userChoice) {               // Tar emot en int
+    public void switchNrOne(int userChoice) throws IOException, ClassNotFoundException {               // Tar emot en int
         switch (userChoice) {
             case 1:
                 testing = true;
@@ -101,7 +103,7 @@ public class MenuClass {
         return userChoice;
     }
     
-    public void switchNrTwo(int userChoice) {
+    public void switchNrTwo(int userChoice) throws IOException, ClassNotFoundException {
         switch (userChoice) {
             case 1:
                 menu.registerNewEmployee();                         //  Kallar på registerNewEmployee i ManagementMenu classen

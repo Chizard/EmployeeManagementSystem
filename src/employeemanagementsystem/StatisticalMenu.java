@@ -1,10 +1,11 @@
 
 package employeemanagementsystem;
 
+import java.io.*;
 import java.util.ArrayList;
 
  
-public class StatisticalMenu {
+public class StatisticalMenu implements Serializable{
    
     
     public void AverageWage(ArrayList<Employee> employee) {         // lägger in ArrayList så vi kan hitta employee

@@ -18,11 +18,12 @@ public class Employee  implements Serializable {
     private int dateOfBirth;
     private int salary;
     private int bonus;
-    Scanner scanner = new Scanner(System.in);
+   transient Scanner scanner = new Scanner(System.in);
     
     static int idGenerator = 1;
 
     public Employee(String firstName, String lastName, String department, String position, String gender, int dateOfBirth, int salary) {
+        super();
         this.id = idGenerator;
         idGenerator++;
         this.firstName = firstName;

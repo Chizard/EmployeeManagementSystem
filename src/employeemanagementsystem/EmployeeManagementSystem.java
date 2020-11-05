@@ -3,11 +3,11 @@ package employeemanagementsystem;
 import java.util.*;
 import java.io.*;
 
-public class EmployeeManagementSystem {
+public class EmployeeManagementSystem implements Serializable{
     
-    static Scanner scanner = new Scanner(System.in);
+    transient Scanner scanner = new Scanner(System.in);
      
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
         MenuClass m = new MenuClass();              //Skapar objektet m med hjälp av MenuClass för att komma åt construktor och liknande där i
         m.calling();                                // Använder objektet m för att kalla på calling construktorn i MenuClass
         ManagementMenu manaMenu = new ManagementMenu();
